@@ -1,6 +1,17 @@
-'user strict';
+'use strict';
 
-const formCount = 1500;
-let formQuantity = 2;
+const productName = "Яблоко";
+const goodsCount = "Количество товара";
+const productsCategory = "Категория товара";
+const goodsPrice = "Цена товара";
 
-console.log(formCount * formQuantity);
+
+console.log('Наименование: ', productName);
+
+// !! Необязательное задание !! 
+
+const productAmount = 1500;
+const goodsQuantity = 2;
+const result = productAmount * goodsQuantity;
+
+console.log('Цена:', result, '$');
