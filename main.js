@@ -1,17 +1,11 @@
 'use strict';
 
 const productName = "Яблоко";
-const goodsCount = "Количество товара";
-const productsCategory = "Категория товара";
-const goodsPrice = "Цена товара";
-
+const goodsCount = 16;
+const productsCategory = "Фрукты";
+const goodsPrice = 230;
+// !! Необязательное задание !! 
+const result = goodsCount * goodsPrice;
 
 console.log('Наименование: ', productName);
-
-// !! Необязательное задание !! 
-
-const productAmount = 1500;
-const goodsQuantity = 2;
-const result = productAmount * goodsQuantity;
-
 console.log('Цена:', result, '$');
