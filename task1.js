@@ -1,62 +1,52 @@
 'use strict';
 
-
 {
-  const currenciesMoney = (rub = 87.96, dollar = 1) => {
-    let resultMoney = rub * dollar;
-    const money = +prompt("Обмен 1$ - 87,96руб", "");
+  const euDollar = 1.02;
+  const ruDollar = 1 / 73;
 
-    if (Number.isNaN(money)) {
-      return `${money} - Вы ввели некорректные данные!`;
-    } else {
-      return resultMoney *= money;
-    }
+  const euToRub = (amountEU) => amountEU * euDollar / ruDollar;
 
-  }
-
-  const currenciesResultMoney = currenciesMoney();
-  console.log(`Заберите деньги ${currenciesResultMoney}руб`);
+  console.log(`Стоимость ${euToRub(10)}.руб`);
 }
+
 
 {
   const changingWord = (text) => {
+    const normalStr = text.trim().toLowerCase();
 
-    let firstLetterText = text.charAt(0).toUpperCase();
-    let lowerText = text.slice(1).toLowerCase();
-
-    return firstLetterText + lowerText;
+    return normalStr[0].toUpperCase() + normalStr.slice(1);
   }
 
-  const changingText = changingWord("привет Мир");
-  console.log(changingText)
+  console.log(changingWord("привет Мир"))
 }
 
 {
-  const calculate = (totalAmount, goodsCart, promoCode = "") => {
+  const calculate = (amount, quantity, promo = "") => {
+    let total = amount
 
-    if (goodsCart > 10) {
-      totalAmount *= 0.03;
-      console.log(`Больше 10 товаров скидка 3%`);
+    if (quantity > 10) {
+      total -= total * 0.03;
+      console.log(`Больше 10 товаров скидка 3% ${total}.руб`);
     }
 
-    if (totalAmount > 30000) {
-      totalAmount *= 0.15;
-      console.log(`Больше 30000₽ скидка 15%`);
+    if (amount > 30000) {
+      let excess = amount - 30000;
+      total = total - (excess * 0.15);
+      console.log(`Больше 30000₽ скидка 15% ${total}.руб`);
     }
 
-    if (promoCode === "METHED") {
-      totalAmount = promoCode * 0.1;
-      console.log(`Промокод "METHED", скидка 10%`);
+    if (promo === "METHED") {
+      total -= total * 0.1;
+      console.log(`Промокод "METHED", скидка 10% ${total}.руб`);
     }
 
-    if (promoCode === "G3H2Z1" && totalAmount > 2000) {
-      totalAmount -= 500;
-      console.log(`Дарим 500 ${totalAmount}`)
+    if (promo === "G3H2Z1" && amount > 2000) {
+      total -= 500;
+      console.log(`Дарим 500 ${total}.руб`)
     }
 
-    return `${totalAmount} ${goodsCart} ${promoCode}`
+    return `${total}`
   }
 
-  const resultCalculate = calculate(40000, 'G3H2Z1');
-  console.log(resultCalculate);
+  console.log(`Общий сумма со скидок ${calculate(35000, 12, "METHED")}`);
 }
