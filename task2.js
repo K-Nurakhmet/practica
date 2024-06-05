@@ -1,13 +1,13 @@
 'use strict';
 
-const randomNumber = (arrLength, max, min) => {
+const randomNumber = (arrLength, n, m) => {
   const arrNumber = [];
 
-  for (let i = 0; i < arrLength; i++) {
-    arrNumber.push(Math.floor(Math.random() * (max - min + 1) + min))
+  for (let i = 1; i <= arrLength; i++) {
+    arrNumber.push(Math.round(Math.random() * (m - n) + n))
   }
 
   return arrNumber;
 }
 
-console.log(randomNumber(10, -40, 50));
+console.log(randomNumber(99, 10, -10));
