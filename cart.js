@@ -6,22 +6,20 @@ const cart = {
   count: 0,
 
   increaseCount(num) {
-    this.count += num
+    this.count += num;
   },
 
   add(name, price, quantity = 1) {
-    this.items.push({ name, price, quantity });
+    this.items.push({name, price, quantity});
     this.increaseCount(quantity);
   },
 
   calculateItemPrice() {
-    return this.items.reduce((acc, item) => {
-      return acc + item.price * item.quantity
-    }, 0)
+    return this.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   },
 
   get totalPrice() {
-    return this.calculateItemPrice()
+    return this.calculateItemPrice();
   },
 
   clear() {
@@ -36,9 +34,8 @@ const cart = {
   },
 };
 
-cart.add("Машина", 1000, 1);
-cart.add("Мишка", 500, 2);
-cart.add("Iphone", 1500, 1);
+cart.add('Машина', 1000, 1);
+cart.add('Мишка', 500, 2);
+cart.add('Iphone', 1500, 1);
 
 cart.print();
-
